@@ -1,0 +1,16 @@
+<div class="col-12">
+  <nav aria-label="pagination">
+    <ul class="pagination mb-0">
+      <li class="page-item" (click)="selectPage(1)" *ngIf="(page$ - 3) > 1">
+        <a class="page-link shadow-none" href="javascript:void(0)">First</a>
+      </li>
+      <li class="page-item" (click)="selectPage(page$ - 4)" *ngIf="(page$ - 3) > 1">
+        <a class="page-link shadow-none" href="javascript:void(0)">&larr;</a>
+      </li>
+      <li class="page-item" *ngFor="let page of pages$ | async"><a [class.active]="page$ == page" class="page-link shadow-none" href="javascript:void(0)" (click)="selectPage(page)">{{page}}</a></li>
+      <li class="page-item" (click)="selectPage(page$ + 4)" *ngIf="(page$ + 3) < total/10">
+        <a class="page-link shadow-none" href="javascript:void(0)">&rarr;</a>
+      </li>
+    </ul>
+  </nav>
+</div>

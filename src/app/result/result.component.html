@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-3">
+    <div class="row">
+      <div class="col-12">
+        <div class="card mb-2 text-center">
+          <div class="card-header">
+            <h5 class="mb-0">{{result.score}}</h5>
+            <p class="card-text"><small>votes</small></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div routerLink="/question/{{result.question_id}}" [ngClass]="{'bg-success text-white' : result.is_answered}" class="card mb-3 text-center">
+          <div class="card-header">
+            <h5 class="mb-0">{{result.answer_count}}</h5>
+            <p class="card-text"><small>answers</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="row">
+      <div class="col-12">
+        <p routerLink="/question/{{result.question_id}}" class="lead linked">Q: {{result.title | entity}}</p>
+      </div>
+      <div class="col-12">
+        <p>{{result.body | quest:currentQuestion }}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <app-tags [tags]="result.tags"></app-tags>
+      </div>
+      <div class="col text-right">
+        <p><small>asked {{result.creation_date | unixdate | date:mediumDate}} by <u class="linked" (click)="quickOwner(result.owner)">{{result.owner.display_name}}</u></small></p>
+      </div>
+    </div>
+  </div>
+</div>

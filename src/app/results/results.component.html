@@ -1,0 +1,74 @@
+<app-head></app-head>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-7 col-md-8 col-12 offset-lg-1 mt-3 mb-3 pr-0">
+      <div class="col-12 mb-2">
+        <form #search="ngForm" (ngSubmit)="onPageChange(1)" autocomplete="off">
+          <div class="form-group mb-2">
+            <small>results found containing <strong>{{(question | async)?.question}}</strong></small>
+          </div>
+          <div class="input-group">
+            <input name="quest" type="text" class="form-control shadow-none" placeholder="Search..." [(ngModel)]="currentQuestion">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-primary borders-sharp shadow-none">Search</button>
+            </span>
+          </div>
+        </form>
+      </div>
+      <div class="col-12">
+        <div class="row">
+          <div class="col align-middle">
+            <p class="align-middle mt-2 mb-2">{{total}} results</p>
+          </div>
+          <div class="col">
+            <div class="btn-group float-right" role="group">
+              <button type="button"
+                class="btn shadow-none"
+                (click)="onSortChange('relevance')"
+                [ngClass]="sort.getValue()=='relevance' ? 'btn-primary' : 'btn-outline-secondary'">Relevance</button>
+              <button type="button"
+                class="btn shadow-none"
+                (click)="onSortChange('creation')"
+                [ngClass]="sort.getValue()=='creation' ? 'btn-primary' : 'btn-outline-secondary'">Newest</button>
+              <div class="btn-group" role="group">
+                <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle btn-outline-secondary shadow-none" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" (click)="more=more?false:true">
+                  More
+                </button>
+                <div *ngIf="more" class="dropdown-menu d-block" aria-labelledby="btnGroupDrop1">
+                  <a class="dropdown-item"
+                    (click)="onSortChange('votes')"
+                    [class.active]="sort.getValue()=='votes'">Votes</a>
+                  <a class="dropdown-item"
+                    (click)="onSortChange('activity')"
+                    [class.active]="sort.getValue()=='activity'">Activity</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-md-8 col-lg-7 offset-lg-1">
+      <div class="col-12 mb-2 pr-0" *ngFor="let result of (results | async)?.items">
+        <app-result [result]="result"></app-result>
+      </div>
+    </div>
+    <div class="col-4">
+      <app-quickview></app-quickview>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-12 col-lg-7 offset-lg-1">
+      <div class="col-12 d-flex justify-content-between mb-3">
+        <small class="disabled">Ctrl + &larr; | Backward</small>
+        <small class="disabled">Forward | Ctrl + &rarr;</small>
+      </div>
+      <app-pagination *ngIf="total > 10" [page]="+page" [total]="total" (pageChange)="onPageChange($event)"></app-pagination>
+    </div>
+  </div>
+</div>
+<app-loader *ngIf="!show" [@research]></app-loader>

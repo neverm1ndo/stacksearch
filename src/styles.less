@@ -1,1 +1,107 @@
-/* You can add global styles to this file, and also import other style files */
+@stack-orange: #f48023;
+
+a, ul, li, div, button, span, small, u, h1, h2, h3, h4, h5, h6, p {
+  transition: 0.2s linear;
+  outline: none;
+}
+u, .badge {
+  cursor: pointer;
+}
+router-outlet ~ * {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: table;
+}
+app-login, app-signup {
+  display: table;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 0;
+  padding: 15px;
+}
+app-loader {
+  z-index: 2000;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: table;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  bottom: 0px;
+  background: #fff;
+}
+app-quickview {
+  position: fixed;
+  width: 30%;
+  min-width: 300px;
+  right: 15px;
+  top: 105px;
+}
+app-comment {
+  width: 100%;
+}
+pre {
+  background: #dfdfdf;
+  border-radius: 3px;
+  padding: 15px;
+}
+.border-bottom {
+  border-bottom: 1px solid silver;
+}
+.vertify {
+  display: table-cell;
+  vertical-align: middle;
+}
+.btn {
+  &-primary {
+    background-color: #f48023!important;
+    border-color: #f48023!important;
+    box-shadow: #f48023;
+  }
+}
+svg {
+  .st0 { fill:#BCBBBC; }
+  .st1, .st2, .st3, .st4, .st5 { fill: #F48023; }
+}
+.logo {
+  width: 100px;
+  height: 100px;
+}
+.minilogo {
+  position: relative;
+  top: -15px;
+  width: 74px;
+  height: 74px;
+}
+.owner {
+  &-img {
+    border-radius: 100%;
+    width: 32px;
+    height: auto;
+  }
+  &-name {
+    top: 2px;
+    position: relative;
+  }
+}
+.dropdown {
+  &-menu {
+    cursor: pointer;
+    .active {
+      background-color: @stack-orange!important;
+      color: #fff!important;
+    }
+    a {
+      &:active, &:focus {
+      background-color: @stack-orange!important;
+      color: #fff!important;
+      }
+    }
+  }
+}

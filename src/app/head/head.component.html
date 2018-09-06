@@ -1,0 +1,20 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <nav class="col-12 navbar navbar-light bg-light">
+          <a class="navbar-brand" routerLink="/search">
+            <img src="../assets/stack.svg" width="30" height="30" class="d-inline-block align-top mr-3" alt="">
+            <span>Stackoverflow Search</span>
+          </a>
+          <div class="col pr-0 text-right">
+            <span class="navbar-text">
+              Hello, {{user}}
+            </span>
+            <button (click)="auth.logout()" type="button" class="btn btn-primary ml-3">Logout</button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="row pb-3 pt-3 border-bottom">
+  <div class="col-3">
+    <div class="row">
+      <div class="col-12">
+        <div [ngClass]="{'bg-success text-white' : answer.is_accepted}" class="card mb-2 text-center">
+          <div class="card-header">
+            <h5 class="mb-0">{{answer.score}}</h5>
+            <p class="card-text"><small>votes</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="col-12 mb-3">
+      <div class="row">
+        <div class="col">
+          <img class="d-inline owner-img mr-2" src="{{answer.owner.profile_image}}" />
+          <b>{{answer.owner.display_name}}</b>
+        </div>
+        <div class="col text-right"><small>created at
+          {{answer.creation_date | unixdate | date:mediumDate}}</small>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" [innerHtml]="answer.body"></div>
+    <div class="col-12 mt-3">
+      <div class="list-group">
+        <app-comment [comment]="comment" *ngFor="let comment of answer.comments"></app-comment>
+      </div>
+    </div>
+  </div>
+</div>

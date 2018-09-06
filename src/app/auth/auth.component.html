@@ -1,0 +1,33 @@
+<div class="container vertify">
+  <div class="row justify-content-center mb-2">
+    <div class="col-12 text-center">
+      <img (click)="info()" class="minilogo d-inline" src="../assets/stack.svg" id="logo" />
+      <h1 class="display-4 d-inline">Stackoverflow Search</h1>
+      <p class="lead">
+        Angular 6 based client for Stackoverflow search
+      </p>
+    </div>
+  </div>
+  <div class="row justify-content-center mt-2">
+    <div class="col-6 col-12 col-md-6 col-lg-4">
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item col-6">
+          <a class="nav-link text-center" [ngClass]="{active: logInTab}" data-toggle="tab" role="tab" (click)="logInTab=true">Log In</a>
+        </li>
+        <li class="nav-item col-6">
+          <a class="nav-link text-center" [ngClass]="{active: !logInTab}" data-toggle="tab" role="tab" (click)="logInTab=false">Sign Up</a>
+        </li>
+      </ul>
+      <div class="tab-content col-12">
+        <div *ngIf="logInTab===true; else signUpTab" [@rollLeft] class="tab-pane active" id="logInTab" role="tabpanel">
+          <app-login></app-login>
+        </div>
+        <ng-template #signUpTab>
+          <div class="tab-pane active vertify" id="logInTab" role="tabpanel"  [@rollRight]>
+            <app-signup></app-signup>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>

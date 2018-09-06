@@ -1,0 +1,37 @@
+<div class="container vertify centrify">
+  <div class="row justify-content-center mb-3">
+    <div class="col-lg-8 col-12 text-center">
+      <img class="logo" src="../assets/stack.svg" id="logo" />
+      <h1 class="display-4">Stackoverflow Search</h1>
+    </div>
+  </div>
+  <div class="row justify-content-center mb-3">
+    <div class="col-8 text-center">
+      <blockquote class="blockquote">
+        <p class="mb-0">Type your question below, I'll try to find the answer.</p>
+      </blockquote>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-sm-8 col-12">
+      <form #search="ngForm" (ngSubmit)="searchQuestions(search)" autocomplete="off">
+        <div class="input-group mb-3">
+          <input name="quest" type="text" class="form-control shadow-none" placeholder="Search..." ngModel>
+          <span class="input-group-btn">
+            <button type="submit" class="btn btn-primary borders-sharp shadow-none">Search</button>
+          </span>
+        </div>
+        <div *ngIf="empty" [@alert] class="form-group mb-3">
+          <div class="invalid-feedback d-block">
+            Request is empty :(
+          </div>
+        </div>
+      </form>
+      <div class="form-group col-12">
+        <div class="row">
+          <small id="emailHelp" class="form-text text-muted"><strong>For example: </strong><u>What is the default multiplayer limit for Terraria?</u></small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

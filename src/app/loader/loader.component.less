@@ -1,0 +1,79 @@
+.loader {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  text-align: center;
+  -webkit-animation-name: flip;
+  animation-name: flip;
+  animation-fill-mode: both;
+  animation-direction: alternate-reverse;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  &-box {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: table;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    text-align: center;
+    bottom: 0px;
+    background: #fff;
+  }
+  .st2 {
+    -webkit-animation: 2s ease-in 0s infinite alternate stackloader1_xAxis;
+    -moz-animation: 2s ease-in 0s infinite alternate stackloader1_xAxis;
+     -o-animation: 2s ease-in 0s infinite alternate stackloader1_xAxis;
+        animation: 2s ease-in 0s infinite alternate stackloader1_xAxis;
+        opacity: 0;
+  }
+  .st3 {
+    -webkit-animation: 2s ease-in 0s infinite alternate stackloader2_xAxis;
+    -moz-animation: 2s ease-in 0s infinite alternate stackloader2_xAxis;
+     -o-animation: 2s ease-in 0s infinite alternate stackloader2_xAxis;
+        animation: 2s ease-in 0s infinite alternate stackloader2_xAxis;
+        opacity: 0;
+  }
+  .st4 {
+    -webkit-animation: 2s ease-in 0s infinite alternate stackloader3_xAxis;
+    -moz-animation: 2s ease-in 0s infinite alternate stackloader3_xAxis;
+     -o-animation: 2s ease-in 0s infinite alternate stackloader3_xAxis;
+        animation: 2s ease-in 0s infinite alternate stackloader3_xAxis;
+        opacity: 0;
+  }
+   .st5 {
+    -webkit-animation: 2s ease-in 0s infinite alternate stackloader4_xAxis;
+    -moz-animation: 2s ease-in 0s infinite alternate stackloader4_xAxis;
+     -o-animation: 2s ease-in 0s infinite alternate stackloader4_xAxis;
+        animation: 2s ease-in 0s infinite alternate stackloader4_xAxis;
+        opacity: 0;
+  }
+  @keyframes stackloader1_xAxis {
+    0% {opacity: 0};
+    30% { transform: rotate(0deg) translate(-8px, 0px); opacity: 1;}
+    100% { transform: rotate(0deg) translate(-8px, 0px); opacity: 1;}
+  }
+  @keyframes stackloader2_xAxis {
+    25% {opacity: 0};
+    50% { transform: rotate(0deg) translate(-26px, 0px); opacity: 1;}
+    100% { transform: rotate(0deg) translate(-26px, 0px); opacity: 1;}
+  }
+  @keyframes stackloader3_xAxis {
+    45% {opacity: 0};
+    75% {  transform: rotate(0deg) translate(-62px, -4px); opacity: 1;}
+    100% {  transform: rotate(0deg) translate(-62px, -4px); opacity: 1;}
+  }
+  @keyframes stackloader4_xAxis {
+    70% {opacity: 0};
+    95% { transform: translate(-111px, -14px); opacity: 1;}
+    100% { transform: translate(-111px, -14px); opacity: 1;}
+  }
+  @keyframes flip {
+    0% {transform: rotateY(0deg)}
+    47.5% {transform: rotateY(0deg)}
+    52.5% {transform: rotateY(180deg)}
+    100% {transform: rotateY(180deg)}
+  }
+
+}

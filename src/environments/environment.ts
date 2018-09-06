@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  stackoverflow: {
+    name: 'StackFinder Test',
+    id : '13028',
+    secret: 'QPORd)p1hTunjHnWzBA0Gw((',
+    key: '7T1dwH5uLgUwCky0gonCew((',
+    description: 'Angular 6 web client for Stackoverflow search. Testing API.'
+  }
 };
 
 /*

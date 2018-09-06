@@ -1,0 +1,77 @@
+<app-head></app-head>
+<div class="container" *ngIf="question; else loader">
+  <div class="row">
+    <div class="col-12 mt-3">
+      <h4>{{question.title | entity}}</h4>
+    </div>
+    <div class="col-12 mb-3 pt-2">
+      <img class="d-inline owner-img mr-2" src="{{question.owner.profile_image}}" />
+      <small>
+        by <u class="linked">
+          {{question.owner.display_name}}
+        </u>
+      </small>
+      <small>Created at {{question.creation_date | unixdate | date:mediumDate}}</small>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-2 text-center">
+            <div class="card-header">
+              <h5 class="mb-0">{{question.score}}</h5>
+              <p class="card-text"><small>votes</small></p>
+            </div>
+          </div>
+          <div [ngClass]="{'bg-success text-white' : question.is_answered}" class="card mb-2 text-center">
+            <div class="card-header">
+              <h5 class="mb-0">{{question.answer_count}}</h5>
+              <p class="card-text"><small>answers</small></p>
+            </div>
+          </div>
+          <div class="card mb-2 text-center">
+            <div class="card-header">
+              <h5 class="mb-0">{{question.view_count}}</h5>
+              <p class="card-text"><small>views</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-9">
+      <div class="col-12" [innerHtml]="question.body"></div>
+      <div class="col-12">
+        <div class="row">
+          <div class="col">
+            <app-tags [tags]="question.tags"></app-tags>
+          </div>
+          <div *ngIf="question.last_edit_date" class="col text-right"><small>last edit
+            {{question.last_edit_date | unixdate | date:mediumDate}}</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 mt-3">
+        <div class="list-group">
+          <app-comment [comment]="comment" *ngFor="let comment of question.comments"></app-comment>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 d-flex pt-2 pb-2 border-bottom justify-content-between">
+      <h5 class="mb-0">Answers({{question.answers.length}})</h5>
+      <div class="btn-group pr-3" role="group">
+        <button type="button" [ngClass]="sort=='date' ? 'btn-primary' : 'btn-outline-secondary'" (click)="sortByDate()" class="btn shadow-none">Oldest</button>
+        <button type="button" [ngClass]="sort=='votes' ? 'btn-primary' : 'btn-outline-secondary'" (click)="sortByVotes()" class="btn shadow-none">Votes</button>
+      </div>
+      <app-pagination *ngIf="question.answers.length > 10" [total]="question.answers.length" [page]="page" (pageChange)="answersPageChange($event)"></app-pagination>
+    </div>
+    <div class="col-12">
+      <app-answer *ngFor="let answer of answers$ | async" [answer]="answer"></app-answer>
+    </div>
+  </div>
+</div>
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

@@ -1,0 +1,5 @@
+<a href="javascript:void(0)" class="list-group-item list-group-item-action flex-column align-items-start mb-1 pt-1 pb-1">
+    <div class="col-12 mb-1 pr-0 pl-0">
+      <small [innerHtml]="comment.body"></small> - <strong class="mr-2">{{comment.owner.display_name}}</strong><small>{{comment.creation_date | unixdate | date:mediumDate}}</small>
+    </div>
+  </a>

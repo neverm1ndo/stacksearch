@@ -1,0 +1,28 @@
+<div class="card bg-light mb-3" [@quickview] *ngIf="(quickview.topQuestions | async)?.items as items">
+  <div *ngIf="quickview.userview; else tagview" class="card-header">
+    <img class="owner-img d-inline mr-2" src="{{(quickview.view | async)?.profile_image}}" alt="Card image cap"/>
+    <span class="owner-name"><b>{{(quickview.view| async)?.display_name}}</b>'s most popular questions</span>
+  </div>
+  <ng-template #tagview>
+    <div class="card-header">
+      <h5 class="mb-0"><span class="badge badge-success">{{quickview.view| async}}</span> top questions</h5>
+    </div>
+  </ng-template>
+  <div class="list-group list-group-flush">
+    <div class="list-group-item" *ngFor="let question of items">
+      <div class="row">
+        <div class="col-8" >
+          <small><u routerLink="/question/{{question.question_id}}" class="linked">{{question.title | entity}}</u></small>
+        </div>
+        <div class="col-4 pl-0">
+          <div class="card text-center">
+            <div class="card-header">
+              <h6 class="mb-0">{{question.score}}</h6>
+              <p class="card-text"><small>votes</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
